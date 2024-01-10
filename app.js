@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const PORT = 3000;
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -78,3 +79,6 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
