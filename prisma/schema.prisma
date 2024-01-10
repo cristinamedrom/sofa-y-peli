@@ -13,8 +13,30 @@ datasource db {
 model User {
   id String @id @default(uuid())
   email String @unique
+  nickname String @unique
   password String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   isAdmin Boolean @default(false)
+  post Post[]
+}
+
+model Movie {
+  id String @id @default(uuid())
+  titleMov String @unique
+  sypnosis String
+  genre String
+  averageScore String
+  posts Post[]
+}
+
+model Post {
+  id String @id @default(uuid())
+  title String
+  opinion String
+  author User @relation(fields: [authorId], references: [nickname])
+  authorId String
+  movie Movie @relation(fields: [movieId], references: [titleMov])
+  movieId String
+  Score Int
 }

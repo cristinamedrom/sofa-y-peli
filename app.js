@@ -8,6 +8,9 @@ const { create } = require('express-handlebars');
 const session = require('express-session');
 const methodOverride = require('method-override')
 const passport = require('passport');
+const cloudinary = require('cloudinary').v2;
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 const swaggerDocs = require('./config/swagger').swaggerDocs;
 const swaggerUi = require('./config/swagger').swaggerUi;
@@ -24,6 +27,12 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 
 const app = express();
+
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'SECRET',
