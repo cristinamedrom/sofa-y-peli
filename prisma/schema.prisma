@@ -11,25 +11,23 @@ datasource db {
 }
 
 model User {
-  id         String       @id @default(uuid())
-  email      String       @unique
-  nickname   String       @unique
-  password   String
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  isAdmin    Boolean      @default(false)
-  post       Post[]
-  MovieScore MovieScore[]
+  id        String   @id @default(uuid())
+  email     String   @unique
+  nickname  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isAdmin   Boolean  @default(false)
+  post      Post[]
 }
 
 model Movie {
-  id           String       @id @default(uuid())
-  titleMov     String       @unique
+  id           String @id @default(uuid())
+  titleMov     String @unique
   sypnosis     String
   genre        String
   averageScore String
   posts        Post[]
-  MovieScore   MovieScore[]
 }
 
 model Post {
@@ -40,14 +38,5 @@ model Post {
   authorId String
   movie    Movie  @relation(fields: [movieId], references: [titleMov])
   movieId  String
-  Score    Int
-}
-
-model MovieScore {
-  id      String @id @default(uuid())
-  score   Int
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String
-  movie   Movie  @relation(fields: [movieId], references: [id])
-  movieId String
+  score    Int
 }

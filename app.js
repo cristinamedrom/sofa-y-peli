@@ -29,6 +29,7 @@ const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const profileRouter = require('./routes/profile');
+const moviesRouter = require('./routes/movies');
 
 const app = express();
 
@@ -67,6 +68,7 @@ app.use('/', indexRouter);
 app.use('/auth/register-page', registerRouter);
 app.use('/auth/login-page', loginRouter);
 app.use('/profile', profileRouter);
+app.use('/movies', moviesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -84,7 +86,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+module.exports = app;
