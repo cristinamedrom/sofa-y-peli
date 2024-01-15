@@ -1,1 +1,23 @@
-<h1>{{title}}</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    {{#if isAuthenticated}}
+        <p>Bienvenido a tu panel de control.</p>
+        <a href="/profile">Ir al perfil</a>
+    {{else}}
+
+        <p>Bienvenido a Sofá y peli. Para disfrutar de todas las funciones, inicia sesión o regístrate.</p>
+
+        <p>¿Ya tienes una cuenta? <a href="/auth/login-page">Inicia sesión</a></p>
+        <p>¿No tienes una cuenta? <a href="/auth/register-page">Regístrate</a></p>
+    {{/if}}
+</body>
+</html>

@@ -3,8 +3,13 @@ const router = express.Router();
 
 const isAuthenticated = require('../middlewares/isAuthenticated');
 
-router.get('/', isAuthenticated, function(req, res, next) {
-  res.render('index', { title: 'Express project template' });
+//Pagina de inicio iniciada sesión / sin iniciar sesión
+router.get('/', function(req, res, next) {
+  if (req.isAuthenticated()) {
+    res.redirect('/profile');
+  } else {
+    res.render('index', { title: 'Bienvenido a Sofá y peli' });
+  }
 });
 
 router.use('/auth', require('./auth'));

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nickname }} - Perfil</title>
+</head>
+
+<body>
+
+    <h1>{{ nickname }} - Perfil</h1>
+    <p>Fecha de creación: {{ formatDate createdAt }}</p>
+    <p>Última conexión: {{ formatTime lastConnection }}</p>
+
+    <h2>Publicaciones</h2>
+    {{#if posts.length}}
+        <ul>
+            {{#each posts}}
+                <li>{{ this.content }} - {{ formatDateTime this.createdAt }}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No hay publicaciones.</p>
+    {{/if}}
+
+</body>
+
+</html>

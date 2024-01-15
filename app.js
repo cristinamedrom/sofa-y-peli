@@ -26,6 +26,9 @@ const hbs = create({
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
+const registerRouter = require('./routes/register');
+const loginRouter = require('./routes/login');
+const profileRouter = require('./routes/profile');
 
 const app = express();
 
@@ -61,6 +64,9 @@ require('./config/cloudinary');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use('/', indexRouter);
+app.use('/auth/register-page', registerRouter);
+app.use('/auth/login-page', loginRouter);
+app.use('/profile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,7 +6,7 @@ const prisma = require("../prisma");
 
 /**
  * @swagger
- * /auth/register:
+ * /auth/register-page:
  *   post:
  *     summary: Register a new user
  *     description: Registers a new user by saving their email and hashed password.
@@ -34,7 +34,7 @@ const prisma = require("../prisma");
  *       500:
  *         description: Redirects to the registration page on error.
  */
-router.post("/register", async (req, res) => {
+router.post("/register-page", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = await prisma.user.create({
@@ -45,14 +45,14 @@ router.post("/register", async (req, res) => {
     });
     res.redirect("/auth/login-page");
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.redirect("/auth/register-page");
   }
 });
 
 /**
  * @swagger
- * /auth/login:
+ * /auth/login-page:
  *   post:
  *     summary: Authenticate user
  *     description: Logs in a user using email and password.
@@ -79,7 +79,7 @@ router.post("/register", async (req, res) => {
  *         description: Redirects to the home page on success, login page on failure.
  */
 router.post(
-  "/login",
+  "/login-page",
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/auth/login-page",
