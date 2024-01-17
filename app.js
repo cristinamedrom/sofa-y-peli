@@ -46,6 +46,7 @@ app.use(session({
 }));
 
 // view engine setup
+app.engine('hbs', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
