@@ -16,7 +16,7 @@ router.post('/auth/register-page', async (req, res) => {
             where: { email },
         });
         if (existingUser) {
-            return res.render('register', { error: 'El nombre de usuario ya existe' });
+            return res.render('register', { error: 'El correo electrónico ya está registrado' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,13 +24,18 @@ router.post('/auth/register-page', async (req, res) => {
         const newUser = await prisma.user.create({
             data: {
                 email,
-                username: nickname,
+                nickname,
                 password: hashedPassword,
             },
         });
 
+        if (req.isAuthenticated()) {
+            return res.redirect('/profile');
+        }
+
         req.login(newUser, (err) => {
             if (err) {
+                console.error('Error al iniciar sesión después del registro:', err);
                 return res.render('register', { error: 'Error al iniciar sesión después del registro' });
             }
             return res.redirect('/auth/login-page');
