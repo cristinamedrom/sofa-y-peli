@@ -24,8 +24,8 @@ router.post('/auth/register-page', async (req, res) => {
         const newUser = await prisma.user.create({
             data: {
                 email,
-                password: hashedPassword,
                 nickname,
+                password: hashedPassword,
             },
         });
 
@@ -33,7 +33,7 @@ router.post('/auth/register-page', async (req, res) => {
             return res.redirect('/profile');
         }
 
-        req.login(newUser, (err) => {
+        req.logIn(newUser, (err) => {
             if (err) {
                 console.error('Error al iniciar sesión después del registro:', err);
                 return res.render('register', { error: 'Error al iniciar sesión después del registro' });

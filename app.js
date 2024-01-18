@@ -13,6 +13,7 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
+
 const swaggerDocs = require('./config/swagger').swaggerDocs;
 const swaggerUi = require('./config/swagger').swaggerUi;
 
@@ -30,6 +31,7 @@ const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const profileRouter = require('./routes/profile');
 const moviesRouter = require('./routes/movies');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -70,6 +72,7 @@ app.use('/auth/register-page', registerRouter);
 app.use('/auth/login-page', loginRouter);
 app.use('/profile', profileRouter);
 app.use('/movies', moviesRouter);
+app.use('/auth', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
