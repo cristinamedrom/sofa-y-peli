@@ -3,15 +3,14 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const isAuthenticated = require('../middlewares/isAuthenticated');
-
-router.get('/profile/:userId', async (req, res) => {
+router.get('/', async (req, res) => {
+    
     try {
-        const userId = parseInt(req.params.userId, 10);
+        const userId = req.user.id;
         const user = await prisma.user.findUnique({
             where: { id: userId },
             include: {
-                posts: true,
+                post: true,
             },
         });
 
@@ -23,8 +22,8 @@ router.get('/profile/:userId', async (req, res) => {
             title: `${user.nickname} - Perfil`,
             nickname: user.nickname,
             createdAt: user.createdAt,
-            lastConnection: user.lastConnection,
-            posts: user.posts,
+            lastConnection: user.updatedAt,
+            post: user.post,
         });
     } catch (error) {
         console.error('Error al obtener el perfil del usuario:', error);

@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const passport = require("passport");
 const prisma = require("../prisma");
+const mailBienvenida = require('../config/nodemailer');
 
 /**
  * @swagger
@@ -34,21 +35,25 @@ const prisma = require("../prisma");
  *       500:
  *         description: Redirects to the registration page on error.
  */
-/*router.post("/register-page", async (req, res) => {
+router.post("/register-page", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = await prisma.user.create({
       data: {
         email: req.body.email,
+        nickname: req.body.nickname,
         password: hashedPassword,
       },
     });
+
+    mailBienvenida(req.body.email, req.body.nickname);
+
     res.redirect("/auth/login-page");
   } catch (error) {
     console.error(error);
     res.redirect("/auth/register-page");
   }
-});*/
+});
 
 
 
@@ -82,8 +87,8 @@ const prisma = require("../prisma");
  */
 router.post("/login-page",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/auth/login-page",
+    successRedirect: '/profile',
+    failureRedirect: '/auth/login-page',
     failureFlash: true,
   })
 );
