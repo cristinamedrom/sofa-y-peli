@@ -68,11 +68,6 @@ require('./config/cloudinary');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use('/', indexRouter);
-app.use('/auth/register-page', registerRouter);
-app.use('/auth/login-page', loginRouter);
-app.use('/profile', profileRouter);
-app.use('/movies', moviesRouter);
-app.use('/auth', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

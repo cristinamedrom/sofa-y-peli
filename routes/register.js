@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { PrismaClient } = require('@prisma/client');
+const mailBienvenida = require('../config/nodemailer');
 const prisma = new PrismaClient();
 
 router.get('/auth/register-page', (req, res) => {
@@ -28,6 +29,8 @@ router.post('/auth/register-page', async (req, res) => {
                 password: hashedPassword,
             },
         });
+
+        mailBienvenida(email, nickname);
 
         if (req.isAuthenticated()) {
             return res.redirect('/profile');

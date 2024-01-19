@@ -3,7 +3,7 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
+const isAuthenticated = require('../middlewares/isAuthenticated');
 const router = express.Router();
 
 router.get('/', async (req, res) => {

@@ -13,5 +13,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/auth', require('./auth'));
+router.use('/profile', require('./profile'));
+router.use('/movies', require('./movies'));
+router.use('/reviews', require('./reviews'));
 
 module.exports = router;
