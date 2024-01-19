@@ -85,6 +85,12 @@ router.post('/:movieId/add', isAuthenticated, async (req, res) => {
             },
         });
 
+        const email = req.user.email;
+        const nickname = req.user.nickname;
+        const movieTitle = title;
+
+        sendEmails.mailReview(email, nickname, movieTitle);
+
         res.redirect(`/reviews/${movieId}`);
     } catch (error) {
         console.error('Error al agregar la reseña:', error);

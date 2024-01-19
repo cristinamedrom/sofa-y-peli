@@ -27,6 +27,27 @@ function mailBienvenida(email, nickname) {
             console.log('Correo enviado: ' + info.response);
         }
     });
-}
+};
 
-module.exports = mailBienvenida;
+function mailReview(email, nickname, movieTitle) {
+    transporter;
+    let mailOptions = {
+        from: 'sofaypeliopiniones@gmail.com',
+        to: email,
+        subject: 'Tu reseña ha sido publicada en Sofá y Peli',
+        text: `Hola ${nickname}! Tu reseña para la película "${movieTitle}" ha sido publicada en Sofá y Peli. Los administradores revisarán y, si esta incumple la ormativa será eliminada. Gracias por compartir tu opinión.`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Correo enviado: ' + info.response);
+        }
+    });
+};
+
+module.exports = {
+    mailBienvenida,
+    mailReview
+};
