@@ -27,11 +27,6 @@ const hbs = create({
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
-const registerRouter = require('./routes/register');
-const loginRouter = require('./routes/login');
-const profileRouter = require('./routes/profile');
-const moviesRouter = require('./routes/movies');
-const authRoutes = require('./routes/auth');
 
 const app = express();
 

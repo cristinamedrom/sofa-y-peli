@@ -41,12 +41,18 @@ router.post('/add', isAuthenticated, async (req, res) => {
     }
     try {
         const { title, synopsis, genre } = req.body;
+        let coverUrl;
+        if (req.file) {
+            const cloudinaryResult = await cloudinary.uploader.upload(req.file.path);
+            coverUrl = cloudinaryResult.secure_url;
+        }
         const newMovie = await prisma.movie.create({
             data: {
                 titleMov: title,
                 sypnosis: synopsis,
                 genre,
                 isPublished: true,
+                coverUrl
             },
         });
         res.redirect('/movies');

@@ -14,22 +14,25 @@
     <h2>Listado de Películas</h2>
 
     {{#if user.isAdmin}}
-      <h3>Añadir Nueva Película</h3>
-      <form action="/movies/add" method="post">
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
+    <h3>Añadir Nueva Película</h3>
+    <form action="/movies/add" method="post" enctype="multipart/form-data">
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" required>
 
-        <label for="synopsis">Sinopsis:</label>
-        <textarea id="synopsis" name="synopsis" required></textarea>
+      <label for="synopsis">Sinopsis:</label>
+      <textarea id="synopsis" name="synopsis" required></textarea>
 
-        <label for="genre">Género:</label>
-        <input type="text" id="genre" name="genre" required>
+      <label for="genre">Género:</label>
+      <input type="text" id="genre" name="genre" required>
 
-        <label for="averageScore">Puntuación Promedio:</label>
-        <input type="text" id="averageScore" name="averageScore" required>
+      <label for="averageScore">Puntuación Promedio:</label>
+      <input type="text" id="averageScore" name="averageScore" required>
 
-        <button type="submit">Añadir Película</button>
-      </form>
+      <label for="image">Seleccionar imagen:</label>
+      <input type="file" name="image" accept="image/*">
+
+      <button type="submit">Añadir Película</button>
+    </form>
     {{/if}}
 
     <h3>Filtrar y Ordenar</h3>
@@ -48,13 +51,13 @@
 
     <ul>
       {{#each movies}}
-        <li>
-          <strong>{{this.titleMov}}</strong>
-          <p>{{this.sypnosis}}</p>
-          <p>Género: {{this.genre}}</p>
-          <p>Puntuación Promedio: {{this.averageScore}}</p>
-          <a href="/movies/{{this.id}}/reviews">Ver Opiniones</a>
-        </li>
+      <li>
+        <strong>{{this.titleMov}}</strong>
+        <p>{{this.sypnosis}}</p>
+        <p>Género: {{this.genre}}</p>
+        <p>Puntuación Promedio: {{this.averageScore}}</p>
+        <a href="/movies/{{this.id}}/reviews">Ver Opiniones</a>
+      </li>
       {{/each}}
     </ul>
   </div>

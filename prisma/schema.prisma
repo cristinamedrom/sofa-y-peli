@@ -22,11 +22,12 @@ model User {
 }
 
 model Movie {
-  id           String @id @default(uuid())
-  titleMov     String @unique
+  id           String  @id @default(uuid())
+  titleMov     String  @unique
   sypnosis     String
   genre        String
   averageScore String
+  coverUrl     String?
   posts        Post[]
 }
 
