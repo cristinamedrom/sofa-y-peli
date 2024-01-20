@@ -66,7 +66,7 @@ npm start
 
 ## Autor
 
-- **Cristina Medrano** - _Initial work_ - [cristinamedrom]([https://github.com/YourUsername](https://github.com/cristinamedrom))
+- **Cristina Medrano** - _Initial work_ - [cristinamedrom]([cristinamedrom](https://github.com/cristinamedrom))
 
 ## License
 
