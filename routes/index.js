@@ -12,6 +12,16 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.get('/logout', (req, res) => {
+  req.logout((err) => {
+      if (err) {
+          console.error('Error al cerrar sesión', err);
+          return res.redirect('/');
+      }
+      res.redirect('/');
+  });
+});
+
 router.use('/auth', require('./auth'));
 router.use('/profile', require('./profile'));
 router.use('/movies', require('./movies'));

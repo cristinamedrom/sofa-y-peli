@@ -38,7 +38,7 @@ cloudinary.config({
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'SECRET',
-  resave: false,
+  resave: true,
   saveUninitialized: false,
 }));
 

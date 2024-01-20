@@ -8,32 +8,50 @@
 </head>
 
 <body>
-  <h1>Movies</h1>
+  <nav>
+    <div class="menuFlex">
+      <a href="/profile">
+        <p>Perfil</p>
+      </a>
+      <br>
+      <a href="/movies">
+        <p>Películas</p>
+      </a>
+      <br>
+      <a href="/reviews">
+        <p>Opiniones</p>
+      </a>
+    </div>
+  </nav>
+  <div class="elements">
+    <h1>Movies</h1>
 
-  <div class="container">
-    <h2>Listado de Películas</h2>
+    <div class="container">
+      <h2>Listado de Películas</h2>
 
-    {{#if user.isAdmin}}
-    <h3>Añadir Nueva Película</h3>
-    <form action="/movies/add" method="post" enctype="multipart/form-data">
-      <label for="title">Título:</label>
-      <input type="text" id="title" name="title" required>
+      {{#if user.isAdmin}}
+      <h3>Añadir Nueva Película</h3>
+      <form action="/movies/add" method="post" enctype="multipart/form-data" class="forms">
+        <label for="titleMov">Título:</label>
+        <input type="text" id="titleMov" name="titleMov" required>
+        <br>
+        <label for="sypnosis">Sinopsis:</label>
+        <textarea id="sypnosis" name="sypnosis" required></textarea>
+        <br>
+        <br>
+        <label for="genre">Género:</label>
+        <input type="text" id="genre" name="genre" required>
+        <br>
+        <label for="averageScore">Puntuación Promedio:</label>
+        <input type="text" id="averageScore" name="averageScore" required>
 
-      <label for="synopsis">Sinopsis:</label>
-      <textarea id="synopsis" name="synopsis" required></textarea>
+        <br>
 
-      <label for="genre">Género:</label>
-      <input type="text" id="genre" name="genre" required>
-
-      <label for="averageScore">Puntuación Promedio:</label>
-      <input type="text" id="averageScore" name="averageScore" required>
-
-      <label for="image">Seleccionar imagen:</label>
-      <input type="file" name="image" accept="image/*">
-
-      <button type="submit">Añadir Película</button>
+        <button type="submit">Añadir Película</button>
+    </div>
     </form>
     {{/if}}
+
 
     <h3>Filtrar y Ordenar</h3>
     <form action="/movies" method="get">

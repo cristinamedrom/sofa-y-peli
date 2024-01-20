@@ -1,8 +1,54 @@
+html {
+  background-image: url(https://img.freepik.com/vector-premium/triangulo-mosaico-lineas-finas-fisuras-fondo-envolver-papel-textil_102193-843.jpg);
+  background-size: 20%;
+  background-repeat: repeat;
+  font-family: verdana, arial, sans-serif, helvetica;
+
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }
 
 a {
   color: #00B7FF;
+}
+
+.menuFlex {
+  display: flex;
+  flex-flow: row;
+  font-family: verdana, arial, sans-serif, helvetica;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.elements {
+  display: flex;
+  flex-flow: column;
+  gap: 2px;
+  padding: 5%;
+}
+
+a:hover {
+  color: #636c72;
+}
+
+.forms {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 400px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
 }

@@ -12,7 +12,9 @@ router.get('/', async (req, res) => {
             include: { author: true, movie: true },
         });
 
-        res.render('allReviews', { reviews });
+        const movies = await prisma.movie.findMany();
+
+        res.render('reviews', { reviews });
     } catch (error) {
         console.error('Error al obtener las reseñas:', error);
         res.status(500).send('Error interno del servidor');
@@ -37,32 +39,45 @@ router.get('/:movieId', async (req, res) => {
             include: { author: true },
         });
 
-        res.render('movieReviews', { movie, reviews });
+        res.render('reviews', { movie, reviews });
     } catch (error) {
         console.error('Error al obtener las reseñas:', error);
         res.status(500).send('Error interno del servidor');
     }
 });
 
-router.get('/:movieId/add', isAuthenticated, async (req, res) => {
+router.get('/add', isAuthenticated, async (req, res) => {
     try {
         if (!req.isAuthenticated()) {
             return res.status(401).send('Acceso no autorizado. Inicia sesión para agregar reseñas.');
-        }
+        };
 
-        const movie = await prisma.movie.findUnique({
-            where: { titleMov: req.params.movieId },
-        });
+        const movies = await prisma.movie.findMany();
 
-        res.render('addReview', { movie });
+        res.render('reviews', { movies });
     } catch (error) {
         console.error('Error al mostrar el formulario de creación de reseñas:', error);
         res.status(500).send('Error interno del servidor');
     }
 });
 
-router.post('/:movieId/add', isAuthenticated, async (req, res) => {
-    const { movieId } = req.params;
+router.get('/add', isAuthenticated, async (req, res) => {
+    try {
+        if (!req.isAuthenticated()) {
+            return res.status(401).send('Acceso no autorizado. Inicia sesión para agregar reseñas.');
+        };
+
+        const movies = await prisma.movie.findMany();
+
+        res.render('reviews', { movies });
+    } catch (error) {
+        console.error('Error al mostrar el formulario de creación de reseñas:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
+router.post('/add', isAuthenticated, async (req, res) => {
+    const { movieId } = req.body;
     const { title, opinion, score } = req.body;
 
     try {
@@ -81,7 +96,7 @@ router.post('/:movieId/add', isAuthenticated, async (req, res) => {
                 opinion,
                 score: parsedScore,
                 author: { connect: { nickname: req.user.nickname } },
-                movie: { connect: { titleMov: movieId } },
+                movie: { connect: { id: movieId } }, // Cambiado de titleMov a id
             },
         });
 

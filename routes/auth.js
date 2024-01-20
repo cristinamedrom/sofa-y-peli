@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const passport = require("passport");
 const prisma = require("../prisma");
-const mailBienvenida = require('../config/nodemailer');
+const { mailBienvenida } = require('../config/nodemailer');
 
 /**
  * @swagger

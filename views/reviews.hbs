@@ -8,33 +8,54 @@
 </head>
 
 <body>
-  <h1>Reseñas</h1>
+  <nav>
+    <div class="menuFlex">
+      <a href="/profile">
+        <p>Perfil</p>
+      </a>
+      <a href="/movies">
+        <p>Películas</p>
+      </a>
+      <a href="/reviews">
+        <p>Opiniones</p>
+      </a>
+    </div>
+  </nav>
+  <div class="elements">
+    <h1>Reseñas</h1>
 
-  {{#if user}}
+
     <h2>Añadir Nueva Reseña</h2>
-    <form action="/reviews/{{movieId}}/add" method="post">
+    <form action="/reviews/add" method="post" class="forms">
+      <label for="movie">Película:</label>
+      <select id="movie" name="movieId" required>
+        {{#each movies}}
+        <option value="{{this.id}}">{{this.titleMov}}</option>
+        {{/each}}
+      </select>
+      <br>
       <label for="title">Título:</label>
       <input type="text" id="title" name="title" required>
-
+      <br>
       <label for="opinion">Opinión:</label>
       <textarea id="opinion" name="opinion" required></textarea>
-
+      <br>
       <label for="score">Puntuación:</label>
       <input type="number" id="score" name="score" required>
-
+      <br>
       <button type="submit">Añadir Reseña</button>
     </form>
-  {{/if}}
 
-  <h2>Reseñas de la Película</h2>
 
-  {{#if reviews.length}}
-    <form action="/reviews" method="get">
+    <h2>Reseñas de la Película</h2>
+
+    {{#if reviews.length}}
+    <form action="/reviews" method="get" class="forms">
       <label for="genreFilter">Filtrar por Género:</label>
       <select id="genreFilter" name="genreFilter">
         <option value="">Todos</option>
         {{#each genres}}
-          <option value="{{this}}">{{this}}</option>
+        <option value="{{this}}">{{this}}</option>
         {{/each}}
       </select>
       <button type="submit">Filtrar</button>
@@ -42,23 +63,24 @@
 
     <ul>
       {{#each reviews}}
-        <li>
-          <strong>{{this.title}}</strong>
-          <p>{{this.opinion}}</p>
-          <p>Puntuación: {{this.score}}</p>
-          <p>Autor: {{this.author.nickname}}</p>
+      <li>
+        <strong>{{this.title}}</strong>
+        <p>{{this.opinion}}</p>
+        <p>Puntuación: {{this.score}}</p>
+        <p>Autor: {{this.author.nickname}}</p>
 
-          {{#if user.isAdmin}}
-            <form action="/reviews/{{this.id}}/delete" method="post">
-              <button type="submit">Eliminar Reseña</button>
-            </form>
-          {{/if}}
-        </li>
+        {{#if user.isAdmin}}
+        <form action="/reviews/{{this.id}}/delete" method="post">
+          <button type="submit">Eliminar Reseña</button>
+        </form>
+        {{/if}}
+      </li>
       {{/each}}
     </ul>
-  {{else}}
+    {{else}}
     <p>No hay reseñas disponibles para esta película.</p>
-  {{/if}}
+    {{/if}}
+  </div>
 </body>
 
 </html>

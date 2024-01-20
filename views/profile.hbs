@@ -9,21 +9,39 @@
 </head>
 
 <body>
+    <nav>
+        <div class="menuFlex">
+            <a href="/profile">
+                <p>Perfil</p>
+            </a>
+            <br>
+            <a href="/movies">
+                <p>Películas</p>
+            </a>
+            <br>
+            <a href="/reviews">
+                <p>Opiniones</p>
+            </a>
+            <a href="/logout">
+                <p>Cerrar sesión</p>
+            </a>
+        </div>
+    </nav>
+    <div class="elements">
+        <h1>{{ nickname }} - Perfil</h1>
+        <p>Fecha de creación: {{ formatDate createdAt }}</p>
 
-    <h1>{{ nickname }} - Perfil</h1>
-    <p>Fecha de creación: {{ formatDate createdAt }}</p>
-
-    <h2>Publicaciones</h2>
-    {{#if posts.length}}
+        <h2>Publicaciones</h2>
+        {{#if posts.length}}
         <ul>
             {{#each posts}}
-                <li>{{ this.content }} - {{ formatDateTime this.createdAt }}</li>
+            <li>{{ this.content }} - {{ formatDateTime this.createdAt }}</li>
             {{/each}}
         </ul>
-    {{else}}
+        {{else}}
         <p>No hay publicaciones.</p>
-    {{/if}}
-
+        {{/if}}
+    </div>
 </body>
 
 </html>
