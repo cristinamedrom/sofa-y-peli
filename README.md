@@ -1,53 +1,60 @@
-# Project Name
+# Sofá & peli
 
-## Description
+## Descripción
 
-Briefly describe what your project does. Include any important information about its purpose, use cases, and functionality.
+Sofá & peli es una aplicación donde podrás dar tu opinión sincera sobre las películas actuales. Podrás registrarte y crear tu perfil, tras esto estarás list@ para comenzar a opinar, ten en en cuenta que es una pequeña comunidad donde los Admin. irán actualizando las películas poco a poco. Si quieres que se añada alguna película en concreto escríbenos un mail a sofaypeliopiniones@gmail.com.
 
-## Features
+## Tecnologías Utilizadas
 
-- Feature 1
-- Feature 2
-- Feature 3
-- Add as many features as your project has
+- Node.js: Plataforma de ejecución para JavaScript.
+- Express: Framework web para Node.js.
+- Prisma: ORM para interactuar con la base de datos.
+- Cloudinary: Servicio de almacenamiento en la nube para gestionar imágenes. (Próximamente)
+- HTML, CSS, Handlebars: Para la construcción de la interfaz de usuario.
 
-## Installation
+## Funcionalidades Principales
 
-Provide step-by-step instructions on how to get a development environment running.
+Registro e Inicio de Sesión:
+  Los usuarios pueden registrarse e iniciar sesión para acceder a funciones adicionales.
+  
+Explorar Películas:
+  Visualizar la lista de películas disponibles con detalles y reseñas.
+
+Agregar Películas:
+  Los administradores pueden agregar nuevas películas.
+
+Dejar Reseñas:
+  Los usuarios pueden dejar reseñas para las películas.
+
+## Configuración del Proyecto
+
+1.Clonar el Repositorio:
 
 ```bash
-git clone https://your-repository-link.git
-cd your-project-name
+git clone git@github.com:cristinamedrom/sofa-y-peli.git
+cd sofa-y-peli
 npm install
 ```
 
-## Usage
-Creating a comprehensive README for your Express project is crucial for documentation. It should provide all the necessary information about your project, including how to set it up, run it, and understand its structure. Below is a template you can use as a starting point. Adjust it according to the specifics of your project:
+2. Configurar Variables de Entorno:
 
----
+- Crea un archivo .env en el directorio raíz.
+- Define las variables de entorno necesarias (base de datos, claves API, etc.).
 
-# Project Name
-
-## Description
-
-Briefly describe what your project does. Include any important information about its purpose, use cases, and functionality.
-
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-- Add as many features as your project has
-
-## Installation
-
-Provide step-by-step instructions on how to get a development environment running.
+3. Migraciones de la Base de Datos e iniciar aplicación:
 
 ```bash
-git clone https://your-repository-link.git
-cd your-project-name
-npm install
+npx prisma migrate dev
 ```
+
+```bash
+npm start
+```
+
+4. Acceder a la Aplicación:
+
+Visita http://localhost:3000 en tu navegador.
+
 
 ## Usage
 
@@ -57,115 +64,10 @@ Explain how to use your application with examples. Include any necessary command
 npm start
 ```
 
-## API Documentation
+## Autor
 
-If applicable, include details about your API endpoints, or provide a link to where the API documentation is hosted.
-
-## Configuration
-
-Discuss any configuration files and environment variables needed to run your project.
-
-## Tests
-
-Describe how to run the automated tests for this system.
-
-```bash
-npm test
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system, if applicable.
-
-## Contributing
-
-State if you are open to contributions and how interested contributors can get started. Include a link to your `CONTRIBUTING.md` file if you have one.
-
-## Versioning
-
-If you use versioning, explain how it works.
-
-## Authors
-
-- **Your Name** - _Initial work_ - [YourUsername](https://github.com/YourUsername)
+- **Cristina Medrano** - _Initial work_ - [cristinamedrom]([https://github.com/YourUsername](https://github.com/cristinamedrom))
 
 ## License
 
 This project is licensed under the XYZ License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
----
-
-### Notes:
-
-- **Project Name**: Replace with the name of your project.
-- **Repository Link**: Provide the link to your project's repository.
-- **Your Project Name**: Replace with the actual name of your project's directory.
-- **Your Name and YourUsername**: Replace with your actual name and GitHub username.
-- **License**: If your project doesn't have a license yet, you might want to choose one. Open-source licenses like MIT, GPL, or Apache are popular choices.
-
-This template is a good starting point, but feel free to add more sections that you think are necessary for your project, such as 'Background', 'Built With', 'Screenshots', etc. Remember, the more detailed your README, the easier it is for others to understand and contribute to your project.
-Explain how to use your application with examples. Include any necessary commands.
-
-```bash
-npm start
-```
-
-## API Documentation
-
-If applicable, include details about your API endpoints, or provide a link to where the API documentation is hosted.
-
-## Configuration
-
-Discuss any configuration files and environment variables needed to run your project.
-
-## Tests
-
-Describe how to run the automated tests for this system.
-
-```bash
-npm test
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system, if applicable.
-
-## Contributing
-
-State if you are open to contributions and how interested contributors can get started. Include a link to your `CONTRIBUTING.md` file if you have one.
-
-## Versioning
-
-If you use versioning, explain how it works.
-
-## Authors
-
-- **Your Name** - _Initial work_ - [YourUsername](https://github.com/YourUsername)
-
-## License
-
-This project is licensed under the XYZ License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
----
-
-### Notes:
-
-- **Project Name**: Replace with the name of your project.
-- **Repository Link**: Provide the link to your project's repository.
-- **Your Project Name**: Replace with the actual name of your project's directory.
-- **Your Name and YourUsername**: Replace with your actual name and GitHub username.
-- **License**: If your project doesn't have a license yet, you might want to choose one. Open-source licenses like MIT, GPL, or Apache are popular choices.
-
-This template is a good starting point, but feel free to add more sections that you think are necessary for your project, such as 'Background', 'Built With', 'Screenshots', etc. Remember, the more detailed your README, the easier it is for others to understand and contribute to your project.
